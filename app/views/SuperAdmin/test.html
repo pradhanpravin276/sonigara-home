@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" media="screen" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/base/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="http://trirand.com/blog/jqgrid/themes/ui.jqgrid.css" />
+  
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+ 
+<script src="http://trirand.com/blog/jqgrid/js/i18n/grid.locale-en.js" type="text/javascript"></script>
+<script src="http://trirand.com/blog/jqgrid/js/jquery.jqGrid.min.js" type="text/javascript"></script>
+
+    <meta charset="utf-8" />
+    <title>jqGrid Loading Data - Million Rows from a REST service</title>
+</head>
+<body>
+
+    <table id="jqGrid"></table>
+    <div id="jqGridPager"></div>
+
+    <script type="text/javascript"> 
+    
+        $(document).ready(function () {
+            $("#jqGrid").jqGrid({
+                url: 'http://localhost:8080/getCompanyOf',
+                mtype: "POST",
+                datatype: "json",
+                page: 1,
+                colNames: ['Order ID', 'Customer ID', 'Order Date', 'Freight', 'Ship Name','asas'],
+                colModel: [
+                    { name: 'OrderID', key: true, width: 75 },
+                    { name: 'CustomerID', width: 150 },
+                    { name: 'OrderDate', width: 150 },
+                    { name: 'Freight', width: 150 },
+                    { name: 'ShipName', width: 150 },
+                    { name: 'asas', width: 150 }
+                ],
+                width: 750,
+                height: 250,
+                rowNum: 20,
+                pager: "#jqGridPager"
+            })
+        });
+
+    </script>
+
+    
+</body>
+</html>
